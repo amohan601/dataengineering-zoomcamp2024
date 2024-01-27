@@ -13,7 +13,7 @@
   This is optional, but helpful to manage multiple python environments when running multiple projects
   Download <a href="https://www.anaconda.com/download">Anaconda</a>
   Create new environment "learn" 
-  Add the additional dependencies sqlalchemy and psycopg2 (for connecting to postgres), pgcli
+  Add the additional dependencies sqlalchemy and psycopg2 (for connecting to postgres), pgcli, pandas
   <li>Visual studio code for development</li>
   Optional but preferred
   Download <a href="https://code.visualstudio.com/download">Visual studio code</a>
@@ -35,7 +35,18 @@
 ### Things we will do here
 <ol>
   <li>Create Docker container</li>
-  Create postgres container using below script
+  1: existing container
+  simple script to run a docker container with postgres and bash entry point
+  <pre>
+  docker run -it --entrypoint=bash python:3.9
+  </pre>
+  2: docker file with postgres as image and run a simple python script (uses pipeline.py script and Dockerfile)
+  <pre>
+  docker build  -t test:pandas .
+  docker run  -it test:pandas
+  </pre>
+
+  3. Create postgres container using below script
     <pre>
     docker run -it \
         -e  POSTGRES_USER=root \

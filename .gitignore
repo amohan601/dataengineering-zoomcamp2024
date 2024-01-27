@@ -199,6 +199,4 @@ Vagrantfile
 *.terraform.lock.hcl
 *.csv
 *.csv.gz
-pipeline.py
 upload-data.py
-Dockerfile
