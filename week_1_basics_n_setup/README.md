@@ -46,7 +46,7 @@
   docker run  -it test:pandas
   </pre>
 
-  3. Create postgres container using below script
+  3: Create postgres container using below script
     <pre>
     docker run -it \
         -e  POSTGRES_USER=root \
