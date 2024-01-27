@@ -17,7 +17,7 @@ provider "google" {
 
 
 resource "google_storage_bucket" "data-lake-bucket" {
-  name     = "aj2024dataengineering42442342341"
+  name     = "<bucket_name>"
   location = "US"
 
   # Optional, but recommended settings:
@@ -42,7 +42,7 @@ resource "google_storage_bucket" "data-lake-bucket" {
 
 
 resource "google_bigquery_dataset" "dataset" {
-  dataset_id = "aj2024dataengineering424423423411"
+  dataset_id = "<bigquery_dataset_name>"
   project    = "<my-project-id>"
   location   = "US"
 }
