@@ -1,0 +1,23 @@
+#docker compose with two contains by default they both will be in same network
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "../postgres/data_ny_taxi:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+    container_name: pgdatabase_container
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8080:80"
+    volumes:
+      - "../pgadmin/data_pgadmin:/var/lib/pgadmin"
+    container_name: pgadmin_container

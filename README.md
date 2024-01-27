@@ -1,1 +1,8 @@
-# dataengineering-zoomcamp2024
+### DataEngineering zoomcamp 2024 projects
+Thanks to <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main">DataTalksClub</a> for hosting for 2024  DataEngineering zoomcamp.
+
+
+List of projects I did with DataEngineering zoom camp
+<ol>
+  <li><a href="https://github.com/amohan601/dataengineering-zoomcamp2024/tree/main/week_1_basics_n_setup">Week1 (Infrastructure setup and pipeline creation)</a></li>
+</ol>  
