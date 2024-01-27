@@ -24,27 +24,35 @@
   <li>Download terraform</li>
   Download <a href="https://www.terraform.io/downloads">Terraform</a> to a folder called "terraform"  at root of repository folder
   <li>Download test files</li>
-  Download the below test files to week_1_basics_n_setup folder
-  wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz 
-  wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz
-  wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
+  Download the below test files to week_1_basics_n_setup folder <br/>
+  
+  wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz   <br/>
+  wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz  <br/>
+  wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv  <br/>
+ 
 </ol>
 
 ### Things we will do here
 <ol>
   <li>Create Docker container</li>
   Create postgres container using below script
-  docker run -it \
-      -e  POSTGRES_USER=root \
-      -e  POSTGRES_PASSWORD=root \
-      -e  POSTGRES_DB=ny_taxi \
-      -v  <local volume path/ny_taxi_postgres_data>:/var/lib/postgresql/data \
-      -p 5432:5432 \
-      postgres:13
+    <pre>
+    docker run -it \
+        -e  POSTGRES_USER=root \
+        -e  POSTGRES_PASSWORD=root \
+        -e  POSTGRES_DB=ny_taxi \
+        -v  <local volume path/ny_taxi_postgres_data>:/var/lib/postgresql/data \
+        -p 5432:5432 \
+        postgres:13
+  </pre>
+
 
   <li>Run PGCLI to view data</li>
   Run below command to view data using PGCLI admin screen
-  pgcli -h localhost -p 5432 -u root -d ny_taxi
+    <pre>
+     pgcli -h localhost -p 5432 -u root -d ny_taxi
+    </pre>
+ 
   Run \dt to check if any tables created (There will be none)
  
   <li>Load the data to postgres</li>
@@ -56,6 +64,7 @@
   we will create pgadmin container to connect to postgres and run SQL queries
   Stop Docker container for postgres and we will restart it in network to run and connect Postgres contianer to PGADMIN contianer 
   Run these three scripts in different terminals. 
+  
    docker network create pg-network 
 
     docker run -it \
@@ -80,7 +89,9 @@
 
   <li>Load sample data to DB using python script</li>
   Drop table we created we can use below script to run the python script that does same thing as jupyter notebook file. 
-    URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
+     <pre>
+         URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
 
     python ingest_data.py \
       --user=root \
@@ -90,6 +101,9 @@
       --db=ny_taxi \
       --table_name=yellow_taxi_trips \
       --url=${URL}
+    </pre>
+  
+
    
   <li>Putting everything together</li>
      Navigate to week_1_basics_n_setup
@@ -140,11 +154,16 @@
   <li>Google cloud account set up with credential key file</li>
   Set up account following the vidoes and create service account and add roles. Then generate key and save it under gcp folder
   <li>Terraform setup with variables to generate resources in google cloud</li>
-  export PATH=$PATH:"<Path to google cloud SDK BIN>"
-  export PATH=$PATH:"<Path to TERRAFORM>"
-  export GOOGLE_APPLICATION_CREDENTIALS="<Path to GOOGLE API CREDS JSON>"
+  <pre>
+  export PATH=$PATH:"/path_to_google_sdk_bin_folder"
+  export PATH=$PATH:"/path_to_terraform"
+  export GOOGLE_APPLICATION_CREDENTIALS="/path_to_api_creds_json_file"
+  </pre>
   Run this to authenticate the user 
+  <pre>
   gcloud auth application-default login
+  </pre>
+  
   navigate to terraform_basic folder edit the main.tf and replace <my-project-id> with project id
   run terraform init  terraform plan and finally terraform apply This should create the resourcds in GCP. Run terraform destroy once verified. 
   Perform the same operations in terraform_with_variables folder. 
