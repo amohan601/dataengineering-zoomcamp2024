@@ -133,18 +133,13 @@
   <pre> 
      docker-compose up 
   </pre> 
-     
 
       
-      In another terminal start python http servier using below script. This will serve files under http://your_local_ip:8000 
-  <pre> 
-       python -m http.server  
-  </pre>  
-
-        
-     Next we will run the ingest_data.py file to run and load the data files. 
-     Rerun the script by changing the csv file name and table name to load the 3 CSV files we are working on .
-  <pre>  
+    In another terminal start python http servier using script <b> python -m http.server  </b>. This will serve files under http://your_local_ip:8000 
+    Next we will run the ingest_data.py file to run and load the data files. 
+    Rerun the script by changing the csv file name and table name to load the 3 CSV files we are working on .
+    The ${URL} is accessible because we started python http server and serving the data through this link 
+  
      URL="http://your_ip:8000/yellow_tripdata_2021-01.csv.gz"
     python ingest_data.py \
       --user=root \
@@ -154,8 +149,8 @@
       --db=ny_taxi \
       --table_name=yellow_taxi_trips \
       --url=${URL}
- </pre>
-     The below URL is accessible because we started python http server and serving the data through this link 
+ 
+     
   
   <pre>  
       URL="http://your_ip:8000/green_tripdata_2019-09.csv"
