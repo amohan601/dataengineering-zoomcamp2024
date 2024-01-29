@@ -79,7 +79,7 @@
   we will create pgadmin container to connect to postgres and run SQL queries
   Stop Docker container for postgres and we will restart it in network to run and connect Postgres contianer to PGADMIN contianer 
   Run these three scripts in different terminals. 
-   <pre>
+   
    docker network create pg-network 
 
     docker run -it \
@@ -100,7 +100,7 @@
     --name pgadmin-2 \
     dpage/pgadmin4
 
-    </pre>
+   
     PGADMIN can be accessed using to see the DB and the tables. 
     <pre> http://localhost:8080/browser/  </pre>
     
@@ -150,6 +150,7 @@
       --url=${URL}
 
      The below URL is accessible because we started python http server and serving the data through this link 
+      <pre>
       URL="http://<yourip:8000>/green_tripdata_2019-09.csv"
 
       python ingest_data.py \
