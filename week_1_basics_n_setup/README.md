@@ -1,4 +1,4 @@
-## Notes and Instructions from week1
+## Code, Homework, Notes and Instructions from DataEngineering zoomcamp week1
 
 ###  Prerequisites
 <ol>
