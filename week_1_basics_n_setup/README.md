@@ -162,6 +162,7 @@
 
         you can also use the WGET url instead of local host URL
         
+        Run the homework SQL queries using <a href="https://github.com/amohan601/dataengineering-zoomcamp2024/blob/main/week_1_basics_n_setup/sql-scripts.sql">SQL scripts here</a>
   <li>Google cloud account set up with credential key file</li>
   Set up account following the vidoes and create service account and add roles. Then generate key and save it under gcp folder
   <li>Terraform setup with variables to generate resources in google cloud</li>
@@ -178,5 +179,7 @@
   navigate to terraform_basic folder edit the main.tf and replace <my-project-id> with project id
   run terraform init  terraform plan and finally terraform apply This should create the resourcds in GCP. Run terraform destroy once verified. 
   Perform the same operations in terraform_with_variables folder. 
+
+  
 </ol>
 
