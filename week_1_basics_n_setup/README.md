@@ -138,12 +138,12 @@
   <pre> python -m http.server  
   </pre>  
      This will serve files under 
-  <pre> http://<yourip:8000> 
+  <pre> http://your_local_ip:8000 
   </pre>   
      Next we will run the ingest_data.py file to run and load the data files. 
      Rerun the script by changing the csv file name and table name to load the 3 CSV files we are working on .
-    
-     URL="http://<yourip:8000>/yellow_tripdata_2021-01.csv.gz"
+  <pre>  
+     URL="http://your_ip:8000/yellow_tripdata_2021-01.csv.gz"
     python ingest_data.py \
       --user=root \
       --password=root \
@@ -152,11 +152,11 @@
       --db=ny_taxi \
       --table_name=yellow_taxi_trips \
       --url=${URL}
- 
+ </pre>
      The below URL is accessible because we started python http server and serving the data through this link 
   
-  
-      URL="http://<yourip:8000>/green_tripdata_2019-09.csv"
+  <pre>  
+      URL="http://your_ip:8000/green_tripdata_2019-09.csv"
 
       python ingest_data.py \
         --user=root \
@@ -166,8 +166,10 @@
         --db=ny_taxi \
         --table_name=green_taxi_trips \
         --url=${URL}
-      
-      URL="http://<yourip:8000>/taxi+_zone_lookup.csv"
+  </pre>   
+
+  <pre>     
+      URL="http://your_ip:8000/taxi+_zone_lookup.csv"
 
       python ingest_data.py \
         --user=root \
@@ -177,7 +179,7 @@
         --db=ny_taxi \
         --table_name=taxi_zone_lookup \
         --url=${URL}
-     
+   </pre>  
         you can also use the WGET url instead of local host URL
         
         Run the homework SQL queries using <a href="https://github.com/amohan601/dataengineering-zoomcamp2024/blob/main/week_1_basics_n_setup/sql-scripts.sql">SQL scripts here</a>
