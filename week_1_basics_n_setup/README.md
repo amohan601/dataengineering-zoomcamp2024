@@ -102,13 +102,13 @@
 
    
     PGADMIN can be accessed using to see the DB and the tables. 
-    <pre> http://localhost:8080/browser/  </pre>
+    http://localhost:8080/browser/
     
 
   <li>Load sample data to DB using python script</li>
   Drop table we created we can use below script to run the python script that does same thing as jupyter notebook file. 
 
-     <pre>
+  <pre>
          URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
 
     python ingest_data.py \
@@ -119,7 +119,7 @@
       --db=ny_taxi \
       --table_name=yellow_taxi_trips \
       --url=${URL}
-    </pre>
+ </pre>
   
 
    
@@ -129,12 +129,12 @@
      The docker-compose file contains code to create a postgres container and PGADMIN
      Verify the volume location where data is mapped locally
      Run docker compose file using below
-     <pre> docker-compose up </pre> 
+  <pre> docker-compose up </pre> 
      This will create the postgres DB and start PGADMIN. PGADMIN can be accessed using below to see the DB
-      <pre> http://localhost:8080/browser/</pre> 
+  <pre> http://localhost:8080/browser/</pre> 
       
      In another terminal start python http servier as 
-     <pre> python -m http.server  </pre>  
+  <pre> python -m http.server  </pre>  
      This will serve files under <pre> http://<yourip:8000> </pre>   
      Next we will run the ingest_data.py file to run and load the data files. 
      Rerun the script by changing the csv file name and table name to load the 3 CSV files we are working on .
@@ -148,9 +148,10 @@
       --db=ny_taxi \
       --table_name=yellow_taxi_trips \
       --url=${URL}
-
+  </pre>
      The below URL is accessible because we started python http server and serving the data through this link 
-      <pre>
+  
+  <pre>
       URL="http://<yourip:8000>/green_tripdata_2019-09.csv"
 
       python ingest_data.py \
@@ -173,7 +174,7 @@
         --table_name=taxi_zone_lookup \
         --url=${URL}
         
-        </pre>
+    </pre>
         you can also use the WGET url instead of local host URL
         
         Run the homework SQL queries using <a href="https://github.com/amohan601/dataengineering-zoomcamp2024/blob/main/week_1_basics_n_setup/sql-scripts.sql">SQL scripts here</a>
