@@ -127,8 +127,7 @@
      Navigate to week_1_basics_n_setup
      Run conda script to activate the environment conda activate learn 
      The docker-compose file contains code to create a postgres container and PGADMIN
-     Verify the volume location where data is mapped locally
-     
+     Verify the volume location where data is mapped locally. 
      Run docker compose file using below. This will create the postgres DB and start PGADMIN. 
      PGADMIN can be accessed using http://localhost:8080/browser/ to see the DB
   <pre> 
