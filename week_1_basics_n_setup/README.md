@@ -130,15 +130,18 @@
      Verify the volume location where data is mapped locally
      Run docker compose file using below
   <pre> docker-compose up </pre> 
-     This will create the postgres DB and start PGADMIN. PGADMIN can be accessed using below to see the DB
-  <pre> http://localhost:8080/browser/
-  </pre> 
+     This will create the postgres DB and start PGADMIN. PGADMIN can be accessed using http://localhost:8080/browser/ to see the DB
+
       
-     In another terminal start python http servier as 
-  <pre> python -m http.server  
+
+      In another terminal start python http servier as 
+  <pre> 
+       python -m http.server  
   </pre>  
+
      This will serve files under 
-  <pre> http://your_local_ip:8000 
+  <pre> 
+       http://your_local_ip:8000 
   </pre>   
      Next we will run the ingest_data.py file to run and load the data files. 
      Rerun the script by changing the csv file name and table name to load the 3 CSV files we are working on .
