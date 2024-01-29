@@ -151,7 +151,7 @@
   </pre>
      The below URL is accessible because we started python http server and serving the data through this link 
   
-  <pre>
+  
       URL="http://<yourip:8000>/green_tripdata_2019-09.csv"
 
       python ingest_data.py \
@@ -173,8 +173,7 @@
         --db=ny_taxi \
         --table_name=taxi_zone_lookup \
         --url=${URL}
-        
-    </pre>
+     
         you can also use the WGET url instead of local host URL
         
         Run the homework SQL queries using <a href="https://github.com/amohan601/dataengineering-zoomcamp2024/blob/main/week_1_basics_n_setup/sql-scripts.sql">SQL scripts here</a>
