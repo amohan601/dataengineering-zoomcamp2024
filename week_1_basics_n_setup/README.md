@@ -70,12 +70,16 @@
   Load the data from yellow_tripdata_2021-01.csv.gz to postgres
   Load Jupyter notebook from anaconda and run upload-data.ipynb file 
   Recheck the table in PGCLI using \dt
-  run Select count(*) from yellow_taxi_trips to see the data
+  run below script to see the data
+  <pre>
+  Select count(*) from yellow_taxi_trips
+  </pre>
+   
   <li>Run PDADMIN to run SQL queries</li>
   we will create pgadmin container to connect to postgres and run SQL queries
   Stop Docker container for postgres and we will restart it in network to run and connect Postgres contianer to PGADMIN contianer 
   Run these three scripts in different terminals. 
-  
+   <pre>
    docker network create pg-network 
 
     docker run -it \
@@ -96,7 +100,10 @@
     --name pgadmin-2 \
     dpage/pgadmin4
 
-    PGADMIN can be accessed using http://localhost:8080/browser/ to see the DB and the tables. 
+    </pre>
+    PGADMIN can be accessed using to see the DB and the tables. 
+    <pre> http://localhost:8080/browser/  </pre>
+    
 
   <li>Load sample data to DB using python script</li>
   Drop table we created we can use below script to run the python script that does same thing as jupyter notebook file. 
@@ -121,12 +128,17 @@
      Run conda script to activate the environment conda activate learn 
      The docker-compose file contains code to create a postgres container and PGADMIN
      Verify the volume location where data is mapped locally
-     Run docker compose file as <b>docker-compose up</b>
-     This will create the postgres DB and start PGADMIN. PGADMIN can be accessed using http://localhost:8080/browser/ to see the DB
-     In another terminal start python http servier as <b>python -m http.server</b> This will serve files under http://<yourip:8000>/
+     Run docker compose file using below
+     <pre> docker-compose up </pre> 
+     This will create the postgres DB and start PGADMIN. PGADMIN can be accessed using below to see the DB
+      <pre> http://localhost:8080/browser/</pre> 
+      
+     In another terminal start python http servier as 
+     <pre> python -m http.server  </pre>  
+     This will serve files under <pre> http://<yourip:8000> </pre>   
      Next we will run the ingest_data.py file to run and load the data files. 
      Rerun the script by changing the csv file name and table name to load the 3 CSV files we are working on .
-
+     <pre>
      URL="http://<yourip:8000>/yellow_tripdata_2021-01.csv.gz"
     python ingest_data.py \
       --user=root \
@@ -159,7 +171,8 @@
         --db=ny_taxi \
         --table_name=taxi_zone_lookup \
         --url=${URL}
-
+        
+        </pre>
         you can also use the WGET url instead of local host URL
         
         Run the homework SQL queries using <a href="https://github.com/amohan601/dataengineering-zoomcamp2024/blob/main/week_1_basics_n_setup/sql-scripts.sql">SQL scripts here</a>
