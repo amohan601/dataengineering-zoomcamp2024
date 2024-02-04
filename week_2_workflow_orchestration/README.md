@@ -5,4 +5,4 @@
 </ol>
 
 Scripts used to create green taxi pipeline can be found here 
-<a href="https://github.com/amohan601/dataengineering-zoomcamp2024/tree/main/week_2_workflow_orchestration">Green taxi pipeline scripts</a>
+<a href="https://github.com/amohan601/dataengineering-zoomcamp2024/tree/main/week_2_workflow_orchestration/mage_scripts">Green taxi pipeline scripts</a>
