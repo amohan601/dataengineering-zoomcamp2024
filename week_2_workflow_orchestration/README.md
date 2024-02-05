@@ -3,7 +3,8 @@
 Set up mage using <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/02-workflow-orchestration#221----intro-to-orchestration">DataEngineering zoomcamp week2 orchestration</a>
 
 Navigate to mage folder and set up google api creds in mage folder with name gcp-creds.json. <br/> 
-Build and run mage container in local using below
+Build and run mage container in local using below.  <br/> 
+When using scripts project id and bucket id are masked. please replace with correct value as needed. 
 
 ```
 docker compose build
