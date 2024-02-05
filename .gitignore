@@ -200,3 +200,6 @@ Vagrantfile
 *.csv
 *.csv.gz
 upload-data.py
+*.pyc 
+*.json
+*__init__.py

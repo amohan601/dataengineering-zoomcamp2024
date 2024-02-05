@@ -1,0 +1,129 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - green_taxi_transformer
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_data_from_url
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_data_from_url
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - green_taxi_data_to_postgres
+  - green_taxi_data_gcs_parquet_partioned
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: green_taxi_transformer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_data_from_url
+  uuid: green_taxi_transformer
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - check_mage_green_taxi_postgres
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: green_taxi_data_to_postgres
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - green_taxi_transformer
+  uuid: green_taxi_data_to_postgres
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: ''
+    data_provider_table: ''
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: replace
+    limit: 1000
+    use_raw_sql: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: check_mage_green_taxi_postgres
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - green_taxi_data_to_postgres
+  uuid: check_mage_green_taxi_postgres
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: ''
+    export_write_policy: replace
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: green_taxi_data_gcs_parquet_partioned
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - green_taxi_transformer
+  uuid: green_taxi_data_gcs_parquet_partioned
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-02-03 18:51:25.072570+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: green_taxi_etl
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+updated_at: '2024-02-04 00:22:05'
+uuid: green_taxi_etl
+variables:
+  bucket_name: <buckerid>
+  months: 10,11,12
+  project_id: <projectid>
+  schema_name: mage
+  table_name: green_taxi
+  year: 2020
+variables_dir: /home/src/mage_data/magic-zoomcamp
+widgets: []
