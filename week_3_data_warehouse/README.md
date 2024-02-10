@@ -16,7 +16,11 @@ The scripts to create
 ### 2. Bigquery and ML on yellow trip data
 To learn Bigquery and ML usage use the scripts <a href="./db_scripts/yellow_taxi_data_bigquery_ml.sql">Yellow taxi bigquery & ml scripts</a> to run in bigquery and generate a model <br/>
 
-Once the model is generated it can be deployed in docker container for performing prediction
+Bigquery can be used used to train a linear regression model on yellow taxi data. We are psasing tip_amount as target label. The goal of ML training is to predict the tip_amount for a ride. it uses training, evaluation, and test data split from this dataset to perform training, evaluation of trained model, and testing the model. Once a model is created hyperparameter tuning is done again and retrained. 
+
+Once the model is generated it can be deployed in docker container for performing prediction.
+
+
 
 ### 3.  Homework for week 3
 

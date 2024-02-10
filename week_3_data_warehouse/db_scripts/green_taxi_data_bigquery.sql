@@ -62,5 +62,15 @@ WHERE DATE(lpep_pickup_datetime) BETWEEN '2022-06-01' AND '2022-06-30';
 select count(distinct PULocationID) from <REPLACE_PROJECT_ID_HERE>.ny_taxi.green_tripdata_partitoned
 WHERE DATE(lpep_pickup_datetime) BETWEEN '2022-06-01' AND '2022-06-30';
 
+--Question8
+-- 0MB estimated
+select count(*) from <REPLACE_PROJECT_ID_HERE>.ny_taxi.external_green_tripdata WHERE DATE(lpep_pickup_datetime) BETWEEN '2022-06-01' AND '2022-06-30';
+--6.41MB estimated
+select count(*) from <REPLACE_PROJECT_ID_HERE>.ny_taxi.green_tripdata_non_partitoned WHERE DATE(lpep_pickup_datetime) BETWEEN '2022-06-01' AND '2022-06-30'; 
+-- 576 KB estimated
+select count(*) from <REPLACE_PROJECT_ID_HERE>.ny_taxi.green_tripdata_partitoned WHERE DATE(lpep_pickup_datetime) BETWEEN '2022-06-01' AND '2022-06-30'; 
+-- 576 KB estimated
+select count(*) from <REPLACE_PROJECT_ID_HERE>.ny_taxi.green_tripdata_partitoned_clustered WHERE DATE(lpep_pickup_datetime) BETWEEN '2022-06-01' AND '2022-06-30'; 
+
 
 
