@@ -1,0 +1,3 @@
+*.*/serving_dir/*.*
+/serving_dir/
+/taxi_model/
