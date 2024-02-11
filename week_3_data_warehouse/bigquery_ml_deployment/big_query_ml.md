@@ -11,7 +11,7 @@ Set up google cloud login for local.
 Load the generated model from bigquery ML into google storage
 
 ```
-    bq --project_id dtc-de-course-411602 extract -m ny_taxi.tip_model gs://nyc-tl-data-dts-2024-module3/taxi_ml_model/tip_model
+    bq --project_id <REPLACE PROJECT ID HERE> extract -m ny_taxi.tip_model gs://nyc-tl-data-dts-2024-module3/taxi_ml_model/tip_model
 ```
 Make a directory locally and copy the remote gcs model to our directory.
 ```
