@@ -15,7 +15,11 @@ The [DBT learning repo](https://github.com/amohan601/dataengineering-dbt)  creat
 Then it is joined with dim_zone data to generate the data
 Each union object is identified by giving service type as 'Green', 'Yellow', 'FHV' and identified accordingly.
 
-The DBT repo is a seperate repo created to allow merge and commit from DBT cloud. 
+The DBT repo is a seperate repo created to allow merge and commit from DBT cloud. The one referred to as full* are the models related to homework. 
 
-The looker studio report for DBT [PDF Visual report](/full_trips.pdf)
+### DBT Lineage
+
+![DBT Lineage](./DBTModel%20Lineage.png "Title")
+
+The looker studio reports for DBT [PDF Visual report 1](/full_trips.pdf) and [PDF Visual report 2](/full_trips_version2.pdf)
 
