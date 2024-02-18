@@ -203,3 +203,4 @@ upload-data.py
 *.pyc 
 *.json
 *__init__.py
+*.DS_Store
