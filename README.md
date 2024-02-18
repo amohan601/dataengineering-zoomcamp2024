@@ -7,5 +7,5 @@ List of projects I did with DataEngineering zoom camp
   <li> <a href="./week_1_basics_n_setup">Week1 (Infrastructure setup and pipeline creation)</a></li>
   <li><a href="./week_2_workflow_orchestration">Week2 (Data orchestration with mage)</a></li>
   <li><a href="./week_3_data_warehouse">Week3 (Data warehouse with bigquery)</a></li>
-  <li><a href="./week_3_data_warehouse">Week3 DLT Workshop</a></li>
+  <li><a href="./week_4_analytics_engineering">Week4 (DBT and data Visualization)</a></li>
 </ol>  
