@@ -17,6 +17,9 @@ Each union object is identified by giving service type as 'Green', 'Yellow', 'FH
 
 The DBT repo is a seperate repo created to allow merge and commit from DBT cloud. The one referred to as full* are the models related to homework. 
 
+Mage scripts to load homework data is shared [here](/mage_scripts/load_yellow_green_fvh_data_from_url.py). This script uses mage pipeline to laod a csv file from any URL and load it to bigquery as a table. I ran it twice once for green and yellow taxi data and once for FHV dataset. 
+
+Will create another python script to run a program to load any file from a URL and load it to BigQuery table.
 ### DBT Lineage
 
 ![DBT Lineage](./DBTModel%20Lineage.png "Title")
