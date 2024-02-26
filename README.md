@@ -9,4 +9,5 @@ List of projects I did with DataEngineering zoom camp
   <li><a href="./week_3_data_warehouse">Week3 (Data warehouse with bigquery)</a></li>
   <li><a href="./dlt_workshop">Week3 (DLT Workshop)</a></li>
   <li><a href="./week_4_analytics_engineering">Week4 (DBT and data Visualization)</a></li>
+  <li><a href="./week_5_batch_processing">Week5 (Data processing using PySpark)</a></li>
 </ol>  
