@@ -204,3 +204,11 @@ upload-data.py
 *.json
 *__init__.py
 *.DS_Store
+week_5_batch_processing/*.csv
+week_5_batch_processing/*.csv.gz
+week_5_batch_processing/zones/
+week_5_batch_processing/fhvhv/
+week_5_batch_processing/data/
+week_5_batch_processing/*.csv.gz.1
+
+
