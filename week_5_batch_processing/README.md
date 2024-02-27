@@ -7,6 +7,13 @@ Following along week 5 videos to set up spark.
 
 ### Spark
 With anaconda and Mac I did the spark set by first installing pyspark and then for environment variable set up findspark and wget for examples
+
+Open anaconda
+Activate the environment where you want to apply these changes
+1. Run pyspark and install it as a package in this environment <br/>
+2. Run findspark and install it as a package in this environment<br/>
+3. Optionally if needed run wget to run wget queries on notebook.
+
 Ensure that openJDK is already set up. This allowed me to not having to install spark seperately and manually setting up the environment
 Also with this I had to use Jupyter Lab (instead of Jupter notebook) to open a jupyter notebook for running the programs
 Once the spark is set up start the conda environment and open Jupyter Lab. 
@@ -36,4 +43,4 @@ For homework we need FHV data for 2019. Load it using [download_taxi_data.sh](./
 ./download_taxi_data.sh fhv 2019
 ```
 
-Run the program FHVSparkprocessing](./FHVSparkprocessing.ipynb) to load it to spark dataframe and execute queries for homework assignments. 
+Run the program FHVSparkprocessing](./FHVSparkprocessing.ipynb) to load it to spark dataframe and execute queries for homework assignments. While loading the dataframe only the month of october is loaded. 
