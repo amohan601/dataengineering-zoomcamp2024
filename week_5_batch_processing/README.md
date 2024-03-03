@@ -36,6 +36,14 @@ Run the program [CheckPySparkVersion](./CheckPySparkVersion.ipynb) to check ever
 
 5. Execute a program to understand about how to run select, filter on spark data frame and how to generate SQL like queries and run it for yellow and green taxi data. Also perform a union all of two tables and run a SQL query that we ran in DBT assignment in previous week [TaxiDataParquetSQLQueryTable](./TaxiDataParquetSQLQueryTable.ipynb) 
 
+6. Execute a program to understand about group by and joins in spark
+[TaxiDataGroupByAndJoin](./TaxiDataGroupByAndJoin.ipynb) 
+
+
+6. Execute a program to understand about RDD in spark
+[RDDExample](./RDDExample.ipynb) 
+
+
 ### Homework
 
 For homework we need FHV data for 2019. Load it using [download_taxi_data.sh](./download_taxi_data.sh)
@@ -44,3 +52,28 @@ For homework we need FHV data for 2019. Load it using [download_taxi_data.sh](./
 ```
 
 Run the program FHVSparkprocessing](./FHVSparkprocessing.ipynb) to load it to spark dataframe and execute queries for homework assignments. While loading the dataframe only the month of october is loaded. 
+
+### Spark with google cloud
+
+Create a bucket in gcs.Upload the parquet files generaated 
+The parquet files generated in the examples above for green and yellow data should be uploaded to this bucket first. Navigate to data folder where pq folder is present. 
+```
+export PATH=$PATH:"/Users/amohan/personal/anj/personal-projects/dataengineering-zoomcamp/gcp/google-cloud-sdk/bin"
+
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/amohan/personal/anj/personal-projects/dataengineering-zoomcamp/gcp/gcp-creds.json"
+
+gcloud auth application-default login
+```
+Run the below command to upload the local parquet files to remote gcs bucket. 
+```
+gsutil -m cp -r pq/ gs://spark_gcs_test_module5/pq
+```
+
+To connect to gcs from jupyter notebook we use hadoop connector jar
+We need to download using below command from root
+```
+mkdir lib
+cd lib
+gsutil cp gs://hadoop-lib/gcs/gcs-connector-hadoop3-2.2.5.jar .
+```
+[SparkWithGoogleCloudStorage](./SparkWithGoogleCloudStorage.ipynb) 
