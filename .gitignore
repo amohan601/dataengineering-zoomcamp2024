@@ -209,6 +209,8 @@ week_5_batch_processing/*.csv.gz
 week_5_batch_processing/zones/
 week_5_batch_processing/fhvhv/
 week_5_batch_processing/data/
+week_5_batch_processing/tmp/
+week_5_batch_processing/lib/
 week_5_batch_processing/*.csv.gz.1
 
 
