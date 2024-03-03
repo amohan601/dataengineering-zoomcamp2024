@@ -76,4 +76,4 @@ mkdir lib
 cd lib
 gsutil cp gs://hadoop-lib/gcs/gcs-connector-hadoop3-2.2.5.jar .
 ```
-[SparkWithGoogleCloudStorage](./SparkWithGoogleCloudStorage.ipynb) 
+Test the connectivity to gcs for a simple spark program [SparkWithGoogleCloudStorage](./SparkWithGoogleCloudStorage.ipynb) 
