@@ -58,9 +58,9 @@ Run the program FHVSparkprocessing](./FHVSparkprocessing.ipynb) to load it to sp
 Create a bucket in gcs.Upload the parquet files generaated 
 The parquet files generated in the examples above for green and yellow data should be uploaded to this bucket first. Navigate to data folder where pq folder is present. 
 ```
-export PATH=$PATH:"/Users/amohan/personal/anj/personal-projects/dataengineering-zoomcamp/gcp/google-cloud-sdk/bin"
+export PATH=$PATH:"replace_path_to/google-cloud-sdk/bin"
 
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/amohan/personal/anj/personal-projects/dataengineering-zoomcamp/gcp/gcp-creds.json"
+export GOOGLE_APPLICATION_CREDENTIALS="replace_path_to/gcp-creds.json"
 
 gcloud auth application-default login
 ```
@@ -76,4 +76,40 @@ mkdir lib
 cd lib
 gsutil cp gs://hadoop-lib/gcs/gcs-connector-hadoop3-2.2.5.jar .
 ```
-Test the connectivity to gcs for a simple spark program [SparkWithGoogleCloudStorage](./SparkWithGoogleCloudStorage.ipynb) 
+Test the connectivity to gcs for a simple spark program [SparkWithGoogleCloudStorage](./SparkWithGoogleCloudStorage.ipynb)
+
+## Accessing spark outside anaconda
+
+Download spark from [here](https://www.apache.org/dyn/closer.lua/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz)
+
+navigate to spark-3.5.1-bin-hadoop3/sbin and start spark master as below 
+```
+./start-master.sh -h localhost
+```
+To start the worker
+```
+./start-worker.sh spark://localhost:7077
+```
+
+Next is to run python task for taxi data as python script outside of jupyter notebook
+Setup spark in path variable as 
+```
+export PATH=$PATH:"replace_path_to/spark-3.5.1-bin-hadoop3/sbin"
+```
+run python task as 
+```
+python spark-master-test-with-greendata.py \
+    --input_green=data/pq/green/2020/*/ \
+    --input_yellow=data/pq/yellow/2020/*/ \
+    --output=data/report-2020
+``` 
+Next we can run the python job using spark-submit
+```
+URL="spark://Anjus-MBP:7077"
+spark-submit \
+    --master="${URL}" \
+    spark-master-test-with-greendata.py \
+        --input_green=data/pq/green/2021/*/ \
+        --input_yellow=data/pq/yellow/2021/*/ \
+        --output=data/report-2021
+```
