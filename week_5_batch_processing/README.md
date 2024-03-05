@@ -103,9 +103,10 @@ python spark-master-test-with-greendata.py \
     --input_yellow=data/pq/yellow/2020/*/ \
     --output=data/report-2020
 ``` 
+Set up SPARK_HOME in PATH variable before running this script. 
 Next we can run the python job using spark-submit
 ```
-URL="spark://Anjus-MBP:7077"
+URL="spark://localhost:7077"
 spark-submit \
     --master="${URL}" \
     spark-master-test-with-greendata.py \
