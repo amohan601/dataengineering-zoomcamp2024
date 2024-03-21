@@ -128,3 +128,34 @@ ORDER BY  AVG_TRIP_TIME DESC;
  HINT: You can use dynamic filter pattern to create a filter condition based on the latest pickup time.
 
  NOTE: For this question 17 hours was picked to ensure we have enough data to work with.
+
+```
+ CREATE MATERIALIZED VIEW busiest_zones AS 
+WITH T AS (
+SELECT zone , tpep_pickup_datetime
+FROM trip_data 
+JOIN taxi_zone ON trip_data.PULocationID = taxi_zone.location_id
+WHERE tpep_pickup_datetime > ('2022-01-03 10:53:33'::TIMESTAMP ) - interval '17 hour'
+)
+SELECT count(*) pickups,zone 
+FROM T
+group by zone
+order by pickups DESC
+LIMIT 10;
+
+dev=> SELECT * FROM busiest_zones;
+ pickups |             zone             
+---------+------------------------------
+      19 | LaGuardia Airport
+      17 | JFK Airport
+      17 | Lincoln Square East
+      16 | Penn Station/Madison Sq West
+      13 | Upper East Side North
+      12 | Times Sq/Theatre District
+      11 | East Chelsea
+      10 | Upper East Side South
+       8 | Clinton East
+       8 | Lenox Hill West
+(10 rows)
+
+```
