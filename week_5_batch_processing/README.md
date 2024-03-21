@@ -104,6 +104,10 @@ python spark-master-test-with-greendata.py \
     --output=data/report-2020
 ``` 
 Set up SPARK_HOME in PATH variable before running this script. 
+```
+export SPARK_HOME="replace_path_to/spark-3.5.1-bin-hadoop3"
+```
+
 Next we can run the python job using spark-submit
 ```
 URL="spark://localhost:7077"
