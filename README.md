@@ -10,4 +10,6 @@ List of projects I did with DataEngineering zoom camp
   <li><a href="./dlt_workshop">Week3 (DLT Workshop)</a></li>
   <li><a href="./week_4_analytics_engineering">Week4 (DBT and data Visualization)</a></li>
   <li><a href="./week_5_batch_processing">Week5 (Data processing using PySpark)</a></li>
+  <li><a href="./week_6_streaming">Week6 (Streaming using kafka and pyspark)</a></li>
+  <li><a href="./risingwave_workshop">Risingwave workshop for streaming data with Materialized views</a></li>
 </ol>  
