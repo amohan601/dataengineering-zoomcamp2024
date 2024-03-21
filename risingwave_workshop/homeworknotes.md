@@ -32,59 +32,30 @@ EXPLAIN CREATE MATERIALIZED VIEW latest_dropoff_time AS
 
 
 ```
-CREATE MATERIALIZED VIEW trip_time AS 
+CREATE MATERIALIZED VIEW trip_time AS  
 WITH T AS (
 SELECT 
-avg(EXTRACT(SECOND FROM tpep_dropoff_datetime - tpep_pickup_datetime)) AVG_TRIP_TIME, 
-min(EXTRACT(SECOND FROM tpep_dropoff_datetime -tpep_pickup_datetime))  MIN_TRIP_TIME, 
-max(EXTRACT(SECOND FROM tpep_dropoff_datetime -tpep_pickup_datetime))  MAX_TRIP_TIME, 
+EXTRACT(hour FROM tpep_dropoff_datetime -tpep_pickup_datetime) * 60 * 60  + 
+EXTRACT(minute FROM tpep_dropoff_datetime -tpep_pickup_datetime) * 60  +
+EXTRACT(second FROM tpep_dropoff_datetime -tpep_pickup_datetime)  triptime, 
 taxi_zone.zone pickupzone, taxi_zone_1.zone dropoffzone 
 FROM trip_data
  JOIN taxi_zone ON trip_data.PULocationID = taxi_zone.location_id
  JOIN taxi_zone as taxi_zone_1 ON trip_data.DOLocationID = taxi_zone_1.location_id
- group by 4,5
 )
-SELECT * FROM T 
-WHERE AVG_TRIP_TIME >= MIN_TRIP_TIME AND AVG_TRIP_TIME <= MAX_TRIP_TIME
+SELECT avg(triptime) AVG_TRIP_TIME , min(triptime) MIN_TRIP_TIME, max(triptime) MAX_TRIP_TIME ,pickupzone,dropoffzone 
+from T 
+group by pickupzone,dropoffzone;
 
+dev=> SELECT * FROM trip_time ORDER BY  AVG_TRIP_TIME DESC LIMIT 5;;
+ avg_trip_time | min_trip_time | max_trip_time |           pickupzone           |        dropoffzone        
+---------------+---------------+---------------+--------------------------------+---------------------------
+  86373.000000 |  86373.000000 |  86373.000000 | Yorkville East                 | Steinway
+  86324.000000 |  86324.000000 |  86324.000000 | Stuy Town/Peter Cooper Village | Murray Hill-Queens
+  86320.000000 |  86320.000000 |  86320.000000 | Washington Heights North       | Highbridge Park
+  86294.000000 |  86294.000000 |  86294.000000 | Two Bridges/Seward Park        | Bushwick South
+  86036.000000 |  86036.000000 |  86036.000000 | Clinton East                   | Prospect-Lefferts Gardens
 
-SELECT * FROM trip_time WHERE pickupzone = 'Yorkville East'
-AND dropoffzone = 'Steinway'
-ORDER BY  AVG_TRIP_TIME DESC;
-
-dev=> SELECT * FROM trip_time WHERE pickupzone = 'Yorkville East'
-dev-> AND dropoffzone = 'Steinway'
-dev-> ORDER BY  AVG_TRIP_TIME DESC;
- avg_trip_time | min_trip_time | max_trip_time |   pickupzone   | dropoffzone 
----------------+---------------+---------------+----------------+-------------
-     33.000000 |     33.000000 |     33.000000 | Yorkville East | Steinway
-(1 row)
-
-
- dev=> SELECT * FROM trip_time WHERE pickupzone = 'Murray Hill'
-dev-> AND dropoffzone = 'Midwood'
-dev-> ORDER BY  AVG_TRIP_TIME DESC;
- avg_trip_time | min_trip_time | max_trip_time | pickupzone | dropoffzone 
----------------+---------------+---------------+------------+-------------
-(0 rows)
-
-dev=> SELECT * FROM trip_time WHERE pickupzone = 'East Flatbush/Farragut'
-dev-> AND dropoffzone = 'East Harlem North'
-dev-> ORDER BY  AVG_TRIP_TIME DESC;
- avg_trip_time | min_trip_time | max_trip_time | pickupzone | dropoffzone 
----------------+---------------+---------------+------------+-------------
-(0 rows)
-
-SELECT * FROM trip_time WHERE pickupzone = 'Midtown Center'
-AND dropoffzone = 'University Heights/Morris Heights'
-ORDER BY  AVG_TRIP_TIME DESC;
-
-dev=> SELECT * FROM trip_time WHERE pickupzone = 'Midtown Center'
-dev-> AND dropoffzone = 'University Heights/Morris Heights'
-dev-> ORDER BY  AVG_TRIP_TIME DESC;
- avg_trip_time | min_trip_time | max_trip_time | pickupzone | dropoffzone 
----------------+---------------+---------------+------------+-------------
-(0 rows)
 
 ```
 
@@ -95,30 +66,29 @@ Recreate the MV(s) in question 1, to also find the number of trips for the pair 
 ```
 DROP  MATERIALIZED VIEW trip_time;
 
-CREATE MATERIALIZED VIEW trip_time AS 
+CREATE MATERIALIZED VIEW trip_time AS  
 WITH T AS (
 SELECT 
-avg(EXTRACT(SECOND FROM tpep_dropoff_datetime - tpep_pickup_datetime)) AVG_TRIP_TIME, 
-min(EXTRACT(SECOND FROM tpep_dropoff_datetime -tpep_pickup_datetime))  MIN_TRIP_TIME, 
-max(EXTRACT(SECOND FROM tpep_dropoff_datetime -tpep_pickup_datetime))  MAX_TRIP_TIME, 
-COUNT(*)  no_of_trips,
+EXTRACT(hour FROM tpep_dropoff_datetime -tpep_pickup_datetime) * 60 * 60  + 
+EXTRACT(minute FROM tpep_dropoff_datetime -tpep_pickup_datetime) * 60  +
+EXTRACT(second FROM tpep_dropoff_datetime -tpep_pickup_datetime)  triptime, 
 taxi_zone.zone pickupzone, taxi_zone_1.zone dropoffzone 
 FROM trip_data
  JOIN taxi_zone ON trip_data.PULocationID = taxi_zone.location_id
  JOIN taxi_zone as taxi_zone_1 ON trip_data.DOLocationID = taxi_zone_1.location_id
- group by 5,6
 )
-SELECT * FROM T 
-WHERE AVG_TRIP_TIME >= MIN_TRIP_TIME AND AVG_TRIP_TIME <= MAX_TRIP_TIME;
+SELECT avg(triptime) AVG_TRIP_TIME , min(triptime) MIN_TRIP_TIME, max(triptime) MAX_TRIP_TIME , COUNT(*)  no_of_trips , pickupzone,dropoffzone 
+from T 
+group by pickupzone,dropoffzone;
 
-SELECT * FROM trip_time WHERE pickupzone = 'Yorkville East'
-AND dropoffzone = 'Steinway'
-ORDER BY  AVG_TRIP_TIME DESC;
-
- avg_trip_time | min_trip_time | max_trip_time | no_of_trips |   pickupzone   | dropoffzone 
----------------+---------------+---------------+-------------+----------------+-------------
-     33.000000 |     33.000000 |     33.000000 |           1 | Yorkville East | Steinway
-(1 row)
+dev=> SELECT * FROM trip_time ORDER BY  AVG_TRIP_TIME DESC LIMIT 5;
+ avg_trip_time | min_trip_time | max_trip_time | no_of_trips |           pickupzone           |        dropoffzone        
+---------------+---------------+---------------+-------------+--------------------------------+---------------------------
+  86373.000000 |  86373.000000 |  86373.000000 |           1 | Yorkville East                 | Steinway
+  86324.000000 |  86324.000000 |  86324.000000 |           1 | Stuy Town/Peter Cooper Village | Murray Hill-Queens
+  86320.000000 |  86320.000000 |  86320.000000 |           1 | Washington Heights North       | Highbridge Park
+  86294.000000 |  86294.000000 |  86294.000000 |           1 | Two Bridges/Seward Park        | Bushwick South
+  86036.000000 |  86036.000000 |  86036.000000 |           1 | Clinton East                   | Prospect-Lefferts Gardens
 
 ```
 
