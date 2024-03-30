@@ -4,8 +4,9 @@ start the conda environment as
 ```
 conda activate dtezoomcamp
 ```
+Homework page reference [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/cohorts/2024/06-streaming/homework.md)
 
-### Question 1 Redpanda version
+### Redpanda version
 to start kafka using redpanda
 ```
 docker compose up -d 
@@ -21,7 +22,7 @@ docker exec -it d4b8a0761fd0 redpanda --version
 Below is the version
 v23.2.26 - 328d83a06e743eaa53773b1246c260bdfd3e88b1
 
-### Question 2 Creating a topic
+### Creating a topic
 
 Use below to create topic
 ```
@@ -41,7 +42,7 @@ NAME        test-topic <br/>
 PARTITIONS  2 <br/>
 REPLICAS    1 <br/>
 
-### Question 3 Connecting to the Kafka server
+### Connecting to the Kafka server
 
 Install below package in environment
 ```
@@ -49,7 +50,7 @@ pip install kafka-python
 ```
 Run the part 1 of program [here](./ConnecToRedPanda-Kafka-Test.ipynb) to check connectivity Output is True
 
-### Question 4 Sending test message
+### Sending test message
 Run the part 2 of the program [here](./ConnecToRedPanda-Kafka-Test.ipynb) The time taken is mostly in sending message and flushing do not take time. Cumulative for entire loop takes around 0.52 seconds or so. 
 
 Sending the messages again and watch the consumer client using below
@@ -58,7 +59,7 @@ Sending the messages again and watch the consumer client using below
 docker exec -it d4b8a0761fd0 rpk topic consume test-topic
 ```
 
-### Question 5 Create green trips data topic and send messages
+### Create green trips data topic and send messages
 To create the topic
 ```
 docker exec -it d4b8a0761fd0 rpk topic create green-trips -c cleanup.policy=compact -r 1 -p 2
